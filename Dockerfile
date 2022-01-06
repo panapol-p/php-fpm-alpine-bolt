@@ -13,5 +13,8 @@ RUN echo "extension='/usr/local/etc/php/ext/bolt.so'" >> /usr/local/etc/php/conf
 RUN docker-php-ext-install pdo pdo_mysql
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
+# add more memory limit and max file size
+RUN echo -e "post_max_size=60M\nupload_max_filesize=60M\nmemory_limit=128M" > "/usr/local/etc/php/conf.d/custom.ini"
+
 # restart php-fpm service for reload php config
 RUN kill -USR2 1
