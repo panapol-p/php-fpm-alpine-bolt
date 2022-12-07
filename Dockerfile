@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:8.1.13-fpm-alpine
 
 # install what u need
 RUN apk --no-cache add nginx supervisor curl
